@@ -4,7 +4,7 @@ def clean_data(data):
     """Limpia nombres y correos electrónicos usando Pandas."""
     df = pd.DataFrame(data)
     
-    # Corregido: Usamos .str.strip() con punto, no con guion
+    # Limpiamos espacios y estandarizamos formatos
     df['email'] = df['email'].str.strip().str.lower()
     df['name'] = df['name'].str.strip().str.title()
     

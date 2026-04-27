@@ -2,12 +2,12 @@ FROM python:3.9-slim
 
 WORKDIR /app
 
-# Copiamos solo los requerimientos primero para aprovechar el cache de Docker
+# Instalamos dependencias primero para optimizar el cache
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Luego copiamos el resto del código
+# Copiamos el código
 COPY . .
 
-# Comando para ejecutar (puedes cambiarlo a pytest para que la nube valide todo al iniciar)
+# Al ejecutar el contenedor, mostrará los datos limpios
 CMD ["python", "main.py"]

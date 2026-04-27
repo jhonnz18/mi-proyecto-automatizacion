@@ -1,0 +1,21 @@
+name: Python application testing
+
+on: [push] # Se activa cada vez que subes código
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Se ejecuta en un servidor de Linux en la nube
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.9"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Test with pytest
+      run: |
+        pytest
